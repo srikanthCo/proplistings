@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Rx';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -15,24 +16,26 @@ export class LogInComponent implements OnInit {
    email:string;
    password:string;
    validate:boolean;
-   authState: any = null;
+   authStates: any = null;
    user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, public flashMessages: FlashMessagesService, public router: Router) {
+  constructor(
+              public afAuth: AngularFireAuth,
+              public flashMessages: FlashMessagesService,
+              public router: Router,
+              public authservice: AuthService
+            ) {
     this.user = afAuth.authState;
     this.afAuth.authState.subscribe((auth) => {
-      this.authState = auth;
-      console.log("user",this.authState)
-      if (this.authState) {
+      this.authStates = auth;
+      if (this.authStates) {
         // User is signed in.
         console.log("signed In")
         this.router.navigate(['']);
-      } else {
-        // No user is signed in.
-        console.log("Signed Out")
+
       }
     });
-    console.log("user",this.user)
+    
   }
   checkPassword() {
     if(!this.password && !this.email) {
@@ -44,21 +47,12 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password).then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
+    this.authservice.emailLogin(this.email, this.password).then(function(result){
       console.log("result",result)
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      // var errorCode = error.code;
-      // var errorMessage = error.message;
-      // // The email of the user's account used.
-      // var email = error.email;
-      // // The firebase.auth.AuthCredential type that was used.
-      // var credential = error.credential;
-      // ...
+    }).catch(function(error){
       console.log("error",error)
     });
+    
   }
 
   ngOnInit() {

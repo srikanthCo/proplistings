@@ -15,10 +15,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListingComponent } from './components/listing/listing.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { EditListingComponent } from './components/edit-listing/edit-listing.component';
-import {FirebaseService} from '../app/services/firebase.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 
+import {FirebaseService} from '../app/services/firebase.service';
+import {AuthService} from '../app/services/auth.service';
 
 const appRoutes: Routes = [
   {path:'',component:HomeComponent},
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     FormsModule,
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
