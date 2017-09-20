@@ -1,0 +1,33 @@
+[debug] [2017-09-20T08:44:00.315Z] ----------------------------------------------------------------------
+[debug] [2017-09-20T08:44:00.330Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\SP\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2017-09-20T08:44:00.331Z] CLI Version:   3.12.0
+[debug] [2017-09-20T08:44:00.332Z] Platform:      win32
+[debug] [2017-09-20T08:44:00.332Z] Node Version:  v6.11.0
+[debug] [2017-09-20T08:44:00.337Z] Time:          Wed Sep 20 2017 14:14:00 GMT+0530 (India Standard Time)
+[debug] [2017-09-20T08:44:00.337Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-20T08:44:00.448Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-20T08:44:00.450Z] > authorizing via signed-in user
+[debug] [2017-09-20T08:44:00.459Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-09-20T08:44:00.460Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/YvTXurt0IibliSVaBQX0zkvT5LDTwnJsZihOeW1cNVA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Sep 20 2017 14:14:00 GMT+0530 (India Standard Time)
+[debug] [2017-09-20T08:44:01.095Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-20T08:44:01.126Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sampler-5e4db  
+ Wed Sep 20 2017 14:14:01 GMT+0530 (India Standard Time)
+[debug] [2017-09-20T08:44:02.382Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-20T08:44:02.385Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sampler-5e4db/tokens  
+ Wed Sep 20 2017 14:14:02 GMT+0530 (India Standard Time)
+[debug] [2017-09-20T08:44:03.357Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'sampler-5e4db'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2017-09-20T08:44:08.376Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/sampler-5e4db/uploads/-KuTSMHIvAscXEDZdgK7?fileCount=9&message=  
+ Wed Sep 20 2017 14:14:08 GMT+0530 (India Standard Time)
+[debug] [2017-09-20T08:44:16.901Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-20T08:44:16.902Z] [hosting] .tgz uploaded successfully, waiting for extraction
