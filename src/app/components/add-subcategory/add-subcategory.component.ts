@@ -15,6 +15,8 @@ export class AddSubcategoryComponent implements OnInit {
   userId:any;
   categories:any;
   category:any;
+  subcategories: any = null;
+  subname: any = null;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -29,10 +31,19 @@ export class AddSubcategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.subcategories = {};
+    console.log("subcat",this.subcategories)
   }
 
   check(){
-    console.log("hi")
+    
+    var result = [];
+    for(var i in this.categories[this.category].subcat)
+      result.push( this.categories[this.category].subcat [i]);
+
+    this.subcategories[this.categories[this.category].cname] = result;
+    this.subname = this.categories[this.category].cname;
+    console.log("hi",this.subname,this.subcategories[this.categories[this.category].cname]);
   }
 
   onAddSubmit(){
