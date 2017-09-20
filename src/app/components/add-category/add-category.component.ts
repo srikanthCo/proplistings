@@ -4,19 +4,14 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../../app/services/auth.service';
 
 @Component({
-  selector: 'app-add-listing',
-  templateUrl: './add-listing.component.html',
-  styleUrls: ['./add-listing.component.css']
+  selector: 'app-add-category',
+  templateUrl: './add-category.component.html',
+  styleUrls: ['./add-category.component.css']
 })
-export class AddListingComponent implements OnInit {
+export class AddCategoryComponent implements OnInit {
 
-  title:any;
-  owner:any;
-  city:any;
-  bedrooms:any;
-  price:any;
-  type:any;
-  image:any;
+  cname:any;
+  description:any;
   userId:any;
 
   constructor(
@@ -33,17 +28,16 @@ export class AddListingComponent implements OnInit {
 
   onAddSubmit(){
     let listing = {
-      title: this.title,
-      city: this.city,
-      owner: this.owner,
-      bedrooms:this.bedrooms,
-      price: this.price,
-      type: this.type,
-      userid: this.userId
+      cname: this.cname,
+      description: this.description
     }
     console.log("listing",listing)
 
-    this.firebaseService.addListing(listing);
+    this.firebaseService.addCategory(listing);
   }
-
 }
+
+
+
+
+

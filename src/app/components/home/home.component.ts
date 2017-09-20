@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
-      console.log("result",result)
+      console.log("result data",result.additionalUserInfo.profile.id)
       // ...
     }).catch(function(error) {
       // Handle Errors here.

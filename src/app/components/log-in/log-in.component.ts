@@ -26,15 +26,20 @@ export class LogInComponent implements OnInit {
               public authservice: AuthService
             ) {
     this.user = afAuth.authState;
-    this.afAuth.authState.subscribe((auth) => {
-      this.authStates = auth;
-      if (this.authStates) {
+    // let delayedObservable = Observable.of(this.authservice.authenticated).delay(5000);
+    // delayedObservable.subscribe((x) => {
+    //   console.log("auth",x);
+    // })
+    console.log("auth login",this.authservice.authenticated)
+    // this.afAuth.authState.subscribe((auth) => {
+    //   this.authStates = auth;
+      if (this.authservice.authenticated) {
         // User is signed in.
         console.log("signed In")
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
 
       }
-    });
+    // });
     
   }
   checkPassword() {
@@ -48,7 +53,7 @@ export class LogInComponent implements OnInit {
 
   login() {
     this.authservice.emailLogin(this.email, this.password).then(function(result){
-      console.log("result",result)
+      console.log("result",result);
     }).catch(function(error){
       console.log("error",error)
     });
@@ -56,7 +61,8 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.validate = true;      
+    this.validate = true;   
+    console.log("hello")   
   }
 
 }

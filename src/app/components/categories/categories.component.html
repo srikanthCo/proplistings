@@ -1,0 +1,14 @@
+<div class="container" *ngIf="categories">
+  <div class="col-md-4" style="padding:2%; background-color: darkseagreen; border-radius: 10px;" *ngFor="let Categories of categories; let i = index" (click)="show(i)" >
+    {{Categories.cname}}
+  </div>
+</div>
+<hr>
+<div>
+  <div class="col-md-4" style="padding:2%; background-color: darkseagreen; border-radius: 10px;" *ngFor="let Subcat of subcat" >
+    <ul *ngIf="visible">
+      <li>{{Subcat.sname}} ({{Subcat.usage}})</li>
+      <!-- <li>{{Subcat.usage}}</li> -->
+    </ul>  
+  </div>
+</div>

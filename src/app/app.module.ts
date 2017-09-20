@@ -20,6 +20,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
 
 import {FirebaseService} from '../app/services/firebase.service';
 import {AuthService} from '../app/services/auth.service';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { AddSubcategoryComponent } from './components/add-subcategory/add-subcategory.component';
 
 const appRoutes: Routes = [
   {path:'',component:HomeComponent},
@@ -28,7 +31,10 @@ const appRoutes: Routes = [
   {path:'addlisting', component:AddListingComponent},
   {path:'editlisting/:id', component:EditListingComponent},
   {path:'login', component:LogInComponent},
-  {path:'signup', component:SignUpComponent}
+  {path:'signup', component:SignUpComponent},
+  {path:'categories', component:CategoriesComponent},
+  {path:'addcategory', component:AddCategoryComponent},
+  {path:'addsubcategory', component:AddSubcategoryComponent}
 ];
 
 @NgModule({
@@ -41,7 +47,10 @@ const appRoutes: Routes = [
     AddListingComponent,
     EditListingComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
+    CategoriesComponent,
+    AddCategoryComponent,
+    AddSubcategoryComponent
   ],
   imports: [
     BrowserModule,

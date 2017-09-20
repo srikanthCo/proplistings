@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Rx';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   user: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth, public flashMessages: FlashMessagesService) {
+  constructor(public afAuth: AngularFireAuth, public flashMessages: FlashMessagesService, public authService: AuthService) {
     this.user = afAuth.authState;
   }
 
@@ -40,7 +41,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     console.log("signing out")
-    this.afAuth.auth.signOut();
+    this.authService.signOut();
     this.flashMessages.show("You are Logged out!",{cssClass:'alert-success',timeout:3000});
   }
 

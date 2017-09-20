@@ -3,6 +3,8 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -14,15 +16,24 @@ export class AuthService {
               private db: AngularFireDatabase,
               private router:Router) {
 
-            this.afAuth.authState.subscribe((auth) => {
-              this.authState = auth
-            });
+                this.authState = this.afAuth.authState.map((auth) => auth);
+                this.afAuth.authState.subscribe((auth) => {
+                  this.authState = auth;
+                  console.log("in con");
+                });
           }
 
   // Returns true if user is logged in
+  
+
   get authenticated(): boolean {
     return this.authState !== null;
   }
+
+  // authenticated(): Observable<firebase.User> {
+  //   return this.afAuth.authState;
+  // }
+
 
   // Returns current user data
   get currentUser(): any {
@@ -36,6 +47,7 @@ export class AuthService {
 
   // Returns current user UID
   get currentUserId(): string {
+    console.log("id",this.authState.uid);
     return this.authenticated ? this.authState.uid : '';
   }
 
@@ -108,8 +120,10 @@ export class AuthService {
   emailLogin(email:string, password:string) {
      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
        .then((user) => {
+         console.log("user",user.providerData[0]);
          this.authState = user
          this.updateUserData()
+         return user;
        })
        .catch(error => console.log(error));
   }

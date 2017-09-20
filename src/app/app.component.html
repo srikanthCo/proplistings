@@ -1,5 +1,14 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <flash-messages></flash-messages>
-  <router-outlet></router-outlet>
-</div>
+<div class="container text-center">
+    <flash-messages></flash-messages>
+    
+    <router-outlet></router-outlet>
+</div> 
+<!-- <div *ngIf="categories">
+    <ul>
+        <li *ngFor="let Categories of categories" (click)="update(Categories.$key)" >
+            {{Categories.category}}
+        </li>
+    </ul>
+</div> -->
+

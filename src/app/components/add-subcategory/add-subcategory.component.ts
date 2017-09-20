@@ -4,20 +4,17 @@ import {Router} from '@angular/router';
 import {AuthService} from '../../../app/services/auth.service';
 
 @Component({
-  selector: 'app-add-listing',
-  templateUrl: './add-listing.component.html',
-  styleUrls: ['./add-listing.component.css']
+  selector: 'app-add-subcategory',
+  templateUrl: './add-subcategory.component.html',
+  styleUrls: ['./add-subcategory.component.css']
 })
-export class AddListingComponent implements OnInit {
+export class AddSubcategoryComponent implements OnInit {
 
-  title:any;
-  owner:any;
-  city:any;
-  bedrooms:any;
-  price:any;
-  type:any;
-  image:any;
+  sname:any;
+  usage:any;
   userId:any;
+  categories:any;
+  category:any;
 
   constructor(
     private firebaseService:FirebaseService,
@@ -26,24 +23,28 @@ export class AddListingComponent implements OnInit {
   ) { 
     this.userId = this.authservice.currentUserId;
     console.log("user",this.userId);
+    this.firebaseService.getCategories().subscribe((cat) => {
+      this.categories=cat;
+    })
   }
 
   ngOnInit() {
   }
 
+  check(){
+    console.log("hi")
+  }
+
   onAddSubmit(){
     let listing = {
-      title: this.title,
-      city: this.city,
-      owner: this.owner,
-      bedrooms:this.bedrooms,
-      price: this.price,
-      type: this.type,
-      userid: this.userId
+      sname: this.sname,
+      usage: this.usage,
+      category: this.categories[this.category].cname,
+      cid: this.categories[this.category].$key
     }
     console.log("listing",listing)
 
-    this.firebaseService.addListing(listing);
+    this.firebaseService.addSubCategory(listing);
   }
 
 }
