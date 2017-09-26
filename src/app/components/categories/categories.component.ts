@@ -26,7 +26,6 @@ export class CategoriesComponent implements OnInit {
       result.push( this.subcat [i]);
 
     this.subcat = result;
-    console.log("subcat",this.categories[index].subcat);
     this.visible = true;
   }
 

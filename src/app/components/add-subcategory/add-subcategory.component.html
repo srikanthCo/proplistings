@@ -8,12 +8,12 @@
       <option *ngFor="let Category of categories; let i=index" value="{{i}}">{{Category.cname}}</option>
     </select>
   </div>
-  <div *ngIf="subcategories[subname]" >
-    <div class="form-group" *ngFor="let count of subcount" >
+  <div *ngIf="subcount" >
+    <div class="form-group" *ngFor="let count of subcount;let i = index" >
       <label>Sub Category</label>
-      <select class="form-control" type="text"  [(ngModel)]="subcategory" name="subcategory" (change)="sub()" required>
+      <select class="form-control" type="text" [(ngModel)]="subcategory[i]" name="subcategory[i]" (change)="sub(i)" required>
         <option  selected value> -- select an option -- </option>
-        <option *ngFor="let subCategory of subcategories[subname]; let in=index" value="{{subCategory.sname}}">{{subCategory.sname}}</option>
+        <option *ngFor="let subCategory of count; let in=index" value="{{in}}">{{subCategory.sname}}</option>
       </select>
     </div>
   </div>

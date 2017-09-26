@@ -45,8 +45,10 @@ export class FirebaseService {
   }
 
   addSubCategory(category){
-    this.subcat = this.db.list('/SideMenu/'+category.cid+"/subcat/") as FirebaseListObservable<Categories[]>;
-    console.log("data",category)
+    var path = category.path;
+    this.subcat = this.db.list('/SideMenu/'+path) as FirebaseListObservable<Categories[]>;
+    console.log("data",category,path)
+    delete category['path'];
     setTimeout(()=>{
       this.subcat.push(category).then(
         (data) => {
